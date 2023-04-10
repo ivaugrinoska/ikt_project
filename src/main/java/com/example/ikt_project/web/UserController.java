@@ -1,18 +1,15 @@
 package com.example.ikt_project.web;
 
-import com.example.ikt_project.service.UserServiceImpl;
-import org.springframework.stereotype.Controller;
+import com.example.ikt_project.service.impl.UserServiceImpl;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
-@RequestMapping("/users")
+@RestController
+@RequestMapping("/api/users")
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserServiceImpl userService;
-
-    public UserController(UserServiceImpl userService) {
-        this.userService = userService;
-    }
-
 
 }
