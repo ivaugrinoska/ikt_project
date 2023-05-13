@@ -2,12 +2,10 @@ package com.example.ikt_project.service;
 
 import com.example.ikt_project.model.Quiz;
 import com.example.ikt_project.model.dto.QuizDto;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
-@Service
 public interface QuizService {
 
     Optional<Quiz> createQuiz(QuizDto quizDto);
