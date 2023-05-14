@@ -14,8 +14,8 @@ public class Quiz {
     Long id;
     String title;
     String description;
-    @ManyToMany
-    List<User> users;
+//    @ManyToMany
+//    List<User> users;
     @OneToMany
     List<Question> questions;
 

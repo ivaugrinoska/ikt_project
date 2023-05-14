@@ -69,15 +69,15 @@ public class QuizServiceImpl implements QuizService {
     @Override
     public Optional<Quiz> addUserToQuiz(Long quizId, String username) {
         Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
-        List<User> users = quiz.getUsers();
+//        List<User> users = quiz.getUsers();
 
-        if(users.stream().filter(user -> user.getUsername().equals(username)).collect(Collectors.toList()).size() == 0){
-            User user = this.userRepository.findUserByUsername(username);
-
-            users.add(user);
-        }
-
-        quiz.setUsers(users);
+//        if(users.stream().filter(user -> user.getUsername().equals(username)).collect(Collectors.toList()).size() == 0){
+//            User user = this.userRepository.findUserByUsername(username);
+//
+//            users.add(user);
+//        }
+//
+//        quiz.setUsers(users);
 
         this.quizRepository.save(quiz);
 
