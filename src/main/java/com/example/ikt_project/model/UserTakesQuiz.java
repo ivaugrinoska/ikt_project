@@ -10,16 +10,16 @@ import lombok.Data;
 public class UserTakesQuiz {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private String id;
-    public Long quizId;
-    public Long user_iktId;
+    Long id;
+    Long quizId;
+    Long userId;
     int result;
 
     public UserTakesQuiz() {}
 
-    public UserTakesQuiz(Long quizId, Long user_iktId) {
+    public UserTakesQuiz(Long quizId, Long userId) {
         this.quizId = quizId;
-        this.user_iktId = user_iktId;
+        this.userId = userId;
 //        this.result = result;
     }
 

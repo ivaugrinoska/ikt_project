@@ -26,7 +26,7 @@ public class UserTakesQuizServiceImpl implements UserTakesQuizService {
 
     @Override
     public Optional<UserTakesQuiz> save(UserTakesQuizDto userTakesQuizDto) {
-        UserTakesQuiz userTakesQuiz = new UserTakesQuiz(userTakesQuizDto.getQuizId(), userTakesQuizDto.getUser_iktId());
+        UserTakesQuiz userTakesQuiz = new UserTakesQuiz(userTakesQuizDto.getQuizId(), userTakesQuizDto.getUserId());
 
         this.userTakesQuizRepository.save(userTakesQuiz);
 
@@ -35,7 +35,7 @@ public class UserTakesQuizServiceImpl implements UserTakesQuizService {
 
     @Override
     public List<UserTakesQuiz> findAllByUser(Long userId) {
-        return this.userTakesQuizRepository.findByUser_iktId(userId);
+        return this.userTakesQuizRepository.findByUserId(userId);
     }
 
     @Override

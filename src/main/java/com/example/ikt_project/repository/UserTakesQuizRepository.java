@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface UserTakesQuizRepository extends JpaRepository<UserTakesQuiz, Long> {
 
-    List<UserTakesQuiz> findByUser_iktId(Long userId);
+    List<UserTakesQuiz> findByUserId(Long userId);
 
     List<UserTakesQuiz> findByQuizId(Long quizId);
 
