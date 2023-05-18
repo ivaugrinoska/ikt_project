@@ -10,4 +10,14 @@ public interface UserTakesQuizService {
     List<UserTakesQuiz> findAll();
 
     Optional<UserTakesQuiz> save(UserTakesQuizDto userTakesQuizDto);
+
+    List<UserTakesQuiz> findAllByUser(Long userId);
+
+    List<UserTakesQuiz> findAllByQuiz(Long quizId);
+
+    List<UserTakesQuiz> findAllByResult(int result);
+
+    Optional<UserTakesQuiz> findById(Long id);
+
+    Optional<UserTakesQuiz> addResult(Long id, int result);
 }

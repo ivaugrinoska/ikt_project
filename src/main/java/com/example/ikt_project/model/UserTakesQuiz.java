@@ -17,10 +17,10 @@ public class UserTakesQuiz {
 
     public UserTakesQuiz() {}
 
-    public UserTakesQuiz(Long quizId, Long user_iktId, int result) {
+    public UserTakesQuiz(Long quizId, Long user_iktId) {
         this.quizId = quizId;
         this.user_iktId = user_iktId;
-        this.result = result;
+//        this.result = result;
     }
 
 }

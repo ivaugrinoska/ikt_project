@@ -6,14 +6,13 @@ import lombok.Data;
 public class UserTakesQuizDto {
     Long quizId;
     Long user_iktId;
-    int result;
+//    int result;
 
     public UserTakesQuizDto() {}
 
-    public UserTakesQuizDto(Long quizId, Long user_iktId, int result) {
+    public UserTakesQuizDto(Long quizId, Long user_iktId) {
         this.quizId = quizId;
         this.user_iktId = user_iktId;
-        this.result = result;
     }
 
 }
