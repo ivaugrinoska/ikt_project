@@ -3,6 +3,7 @@ package com.example.ikt_project.service.impl;
 import com.example.ikt_project.model.Question;
 import com.example.ikt_project.model.Quiz;
 import com.example.ikt_project.model.User;
+import com.example.ikt_project.model.dto.AddQuestionDto;
 import com.example.ikt_project.model.dto.QuizDto;
 import com.example.ikt_project.model.exceptions.QuizNotFoundException;
 import com.example.ikt_project.repository.QuestionRepository;
@@ -85,12 +86,18 @@ public class QuizServiceImpl implements QuizService {
     }
 
     @Override
-    public Optional<Quiz> addQuestionsToQuiz(Long quizId, List<Long> questionIds) {
+    public Optional<Quiz> addQuestionsToQuiz(Long quizId, List<AddQuestionDto> questionIds) {
         List<Question> questions = new ArrayList<>();
         Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
 
+        List<Long> ids = new ArrayList<>();
+
+        for(int i=0; i<questionIds.size();i++){
+            ids.add(questionIds.get(i).getId());
+        }
+
         for(Question question : this.questionRepository.findAll()){
-            for(Long questionId : questionIds){
+            for(Long questionId : ids){
 
                 if(question.getId().equals(questionId)){
                     questions.add(question);

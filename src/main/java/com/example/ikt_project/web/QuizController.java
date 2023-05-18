@@ -3,6 +3,7 @@ package com.example.ikt_project.web;
 import com.example.ikt_project.model.Question;
 import com.example.ikt_project.model.Quiz;
 import com.example.ikt_project.model.User;
+import com.example.ikt_project.model.dto.AddQuestionDto;
 import com.example.ikt_project.model.dto.QuizDto;
 import com.example.ikt_project.service.QuestionService;
 import com.example.ikt_project.service.QuizService;
@@ -88,7 +89,7 @@ public class QuizController {
     }
 
     @PostMapping("/add-questions/{id}")
-    public ResponseEntity<Quiz> addQuestionToQuiz(@PathVariable Long id, @RequestBody List<Long> questionIds) {
+    public ResponseEntity<Quiz> addQuestionToQuiz(@PathVariable Long id, @RequestBody List<AddQuestionDto> questionIds) {
         return this.quizService.addQuestionsToQuiz(id, questionIds)
                 .map(quiz -> ResponseEntity.ok().body(quiz))
                 .orElseGet(() -> ResponseEntity.badRequest().build());

@@ -1,6 +1,7 @@
 package com.example.ikt_project.service;
 
 import com.example.ikt_project.model.Quiz;
+import com.example.ikt_project.model.dto.AddQuestionDto;
 import com.example.ikt_project.model.dto.QuizDto;
 
 import java.util.List;
@@ -20,5 +21,5 @@ public interface QuizService {
 
     Optional<Quiz> addUserToQuiz(Long quizId, String username);
 
-    Optional<Quiz> addQuestionsToQuiz(Long quizId, List<Long> questionIds);
+    Optional<Quiz> addQuestionsToQuiz(Long quizId, List<AddQuestionDto> questionIds);
 }
