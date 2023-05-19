@@ -9,13 +9,16 @@ import lombok.Data;
 public class Answer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String content;
     boolean is_correct;
 
     @ManyToOne
     private Question question;
+
+    @OneToOne
+    private Question correctQuestion;
 
     public Answer() {
     }

@@ -4,6 +4,8 @@ package com.example.ikt_project.model;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 @Entity
 @Table(name = "question")
@@ -15,6 +17,9 @@ public class Question {
 
 //    @ManyToOne
 //    Quiz quiz;
+
+    @OneToMany
+    List<Answer> answers;
 
     public Question() {}
 
