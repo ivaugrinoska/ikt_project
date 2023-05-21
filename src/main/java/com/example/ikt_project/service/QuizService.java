@@ -21,5 +21,5 @@ public interface QuizService {
 
     Optional<Quiz> addUserToQuiz(Long quizId, String username);
 
-    Optional<Quiz> addQuestionsToQuiz(Long quizId, List<AddQuestionDto> questionIds);
+//    Optional<Quiz> addQuestionsToQuiz(Long quizId, List<AddQuestionDto> questionIds);
 }

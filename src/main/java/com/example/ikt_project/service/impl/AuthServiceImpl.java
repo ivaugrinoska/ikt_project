@@ -29,14 +29,14 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
-    public User register(String username, String password, String repeatPassword, String name, String surname, Role userRole) {
+    public User register(String email, String username, String password, String repeatPassword, String name, String surname, Role userRole) {
         if (username == null || username.isEmpty() || password == null || password.isEmpty())
             throw new InvalidArgumentsException();
         if (!password.equals(repeatPassword))
             throw new PasswordsDoNotMatchException();
         if (this.userRepository.findByUsername(username).isPresent())
             throw new UsernameAlreadyExistsException(username);
-        User user = new User(username, passwordEncoder.encode(password), name, surname, userRole);
+        User user = new User(email, username, passwordEncoder.encode(password), name, surname, userRole);
         return userRepository.save(user);
     }
 

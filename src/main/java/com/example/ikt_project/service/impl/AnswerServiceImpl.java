@@ -38,7 +38,7 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public Optional<Answer> createAnswer(AnswerDto answerDto) {
-        Answer newAnswer = new Answer(answerDto.getContent(), answerDto.is_correct());
+        Answer newAnswer = new Answer(answerDto.getContent(), answerRepository.findById(answerDto.getQuestionId()).get().getQuestion(), answerDto.is_correct());
         this.answerRepository.save(newAnswer);
         return Optional.of(newAnswer);
     }

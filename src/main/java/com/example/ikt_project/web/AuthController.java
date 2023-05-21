@@ -25,7 +25,7 @@ public class AuthController {
     @PostMapping("/registerUser")
     public ResponseEntity<String> registerUser(@RequestBody RegisterRequestDto registerUserDto) {
         try {
-            authService.register(registerUserDto.getUsername(), registerUserDto.getPassword(), registerUserDto.getRepeatPassword(), registerUserDto.getName(), registerUserDto.getSurname(), Role.ROLE_USER);
+            authService.register(registerUserDto.getEmail(), registerUserDto.getUsername(), registerUserDto.getPassword(), registerUserDto.getRepeatPassword(), registerUserDto.getName(), registerUserDto.getSurname(), Role.ROLE_USER);
             return ResponseEntity.status(HttpStatus.CREATED).body("User has been created");
         }
         catch (InvalidArgumentsException | PasswordsDoNotMatchException exception){
@@ -50,8 +50,8 @@ public class AuthController {
 
     @GetMapping("/logout")
     @ResponseStatus(HttpStatus.OK)
-    public void logout(HttpServletRequest request) {
+    public ResponseEntity<String> logout(HttpServletRequest request) {
         request.getSession().invalidate();
+        return ResponseEntity.ok("Successfully logged out!");
     }
-
 }

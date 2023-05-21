@@ -17,14 +17,15 @@ public class Answer {
     @ManyToOne
     private Question question;
 
-    @OneToOne
-    private Question correctQuestion;
+//    @OneToOne
+//    private Question correctQuestion;
 
     public Answer() {
     }
 
-    public Answer(String content, boolean is_correct) {
+    public Answer(String content, Question question, boolean is_correct) {
         this.content = content;
+        this.question = question;
         this.is_correct = is_correct;
     }
 

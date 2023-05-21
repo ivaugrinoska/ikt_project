@@ -16,8 +16,8 @@ public class Quiz {
     String description;
 //    @ManyToMany
 //    List<User> users;
-    @OneToMany
-    List<Question> questions;
+//    @OneToMany
+//    List<Question> questions;
 
     public Quiz(){}
 

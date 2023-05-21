@@ -88,11 +88,11 @@ public class QuizController {
         return this.questionService.findAll();
     }
 
-    @PostMapping("/add-questions/{id}")
-    public ResponseEntity<Quiz> addQuestionToQuiz(@PathVariable Long id, @RequestBody List<AddQuestionDto> questionIds) {
-        return this.quizService.addQuestionsToQuiz(id, questionIds)
-                .map(quiz -> ResponseEntity.ok().body(quiz))
-                .orElseGet(() -> ResponseEntity.badRequest().build());
-    }
+//    @PostMapping("/add-questions/{id}")
+//    public ResponseEntity<Quiz> addQuestionToQuiz(@PathVariable Long id, @RequestBody List<AddQuestionDto> questionIds) {
+//        return this.quizService.addQuestionsToQuiz(id, questionIds)
+//                .map(quiz -> ResponseEntity.ok().body(quiz))
+//                .orElseGet(() -> ResponseEntity.badRequest().build());
+//    }
 
 }

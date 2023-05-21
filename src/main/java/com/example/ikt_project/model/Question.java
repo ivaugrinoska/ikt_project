@@ -15,15 +15,16 @@ public class Question {
     Long id;
     String content;
 
-//    @ManyToOne
-//    Quiz quiz;
+    @ManyToOne
+    Quiz quiz;
 
-    @OneToMany
-    List<Answer> answers;
+//    @OneToMany
+//    List<Answer> answers;
 
     public Question() {}
 
-    public Question(String content) {
+    public Question(String content, Quiz quiz) {
         this.content = content;
+        this.quiz = quiz;
     }
 }

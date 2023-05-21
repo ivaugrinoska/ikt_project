@@ -85,31 +85,31 @@ public class QuizServiceImpl implements QuizService {
         return Optional.of(quiz);
     }
 
-    @Override
-    public Optional<Quiz> addQuestionsToQuiz(Long quizId, List<AddQuestionDto> questionIds) {
-        List<Question> questions = new ArrayList<>();
-        Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
-
-        List<Long> ids = new ArrayList<>();
-
-        for(int i=0; i<questionIds.size();i++){
-            ids.add(questionIds.get(i).getId());
-        }
-
-        for(Question question : this.questionRepository.findAll()){
-            for(Long questionId : ids){
-
-                if(question.getId().equals(questionId)){
-                    questions.add(question);
-                }
-
-            }
-        }
-
-        quiz.setQuestions(questions);
-
-        this.quizRepository.save(quiz);
-
-        return Optional.of(quiz);
-    }
+//    @Override
+//    public Optional<Quiz> addQuestionsToQuiz(Long quizId, List<AddQuestionDto> questionIds) {
+//        List<Question> questions = new ArrayList<>();
+//        Quiz quiz = this.quizRepository.findById(quizId).orElseThrow(() -> new QuizNotFoundException(quizId));
+//
+//        List<Long> ids = new ArrayList<>();
+//
+//        for(int i=0; i<questionIds.size();i++){
+//            ids.add(questionIds.get(i).getId());
+//        }
+//
+//        for(Question question : this.questionRepository.findAll()){
+//            for(Long questionId : ids){
+//
+//                if(question.getId().equals(questionId)){
+//                    questions.add(question);
+//                }
+//
+//            }
+//        }
+//
+////        quiz.setQuestions(questions);
+//
+//        this.quizRepository.save(quiz);
+//
+//        return Optional.of(quiz);
+//    }
 }

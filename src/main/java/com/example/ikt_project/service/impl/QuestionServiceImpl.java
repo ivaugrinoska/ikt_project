@@ -27,7 +27,7 @@ public class QuestionServiceImpl implements QuestionService {
 
     @Override
     public Optional<Question> save(QuestionDto questionDto) {
-        Question question = new Question(questionDto.getContent());
+        Question question = new Question(questionDto.getContent(), questionRepository.findById(questionDto.getQuizId()).get().getQuiz());
 
         this.questionRepository.save(question);
 
