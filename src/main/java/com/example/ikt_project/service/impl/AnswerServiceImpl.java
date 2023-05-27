@@ -1,10 +1,12 @@
 package com.example.ikt_project.service.impl;
 
 import com.example.ikt_project.model.Answer;
+import com.example.ikt_project.model.UserTakesQuiz;
 import com.example.ikt_project.model.dto.AnswerDto;
 import com.example.ikt_project.model.exceptions.AnswerNotFoundException;
 import com.example.ikt_project.repository.AnswerRepository;
 import com.example.ikt_project.repository.QuestionRepository;
+import com.example.ikt_project.repository.UserTakesQuizRepository;
 import com.example.ikt_project.service.AnswerService;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +17,12 @@ import java.util.Optional;
 public class AnswerServiceImpl implements AnswerService {
     private final AnswerRepository answerRepository;
     private final QuestionRepository questionRepository;
+    private final UserTakesQuizRepository userTakesQuizRepository;
 
-    public AnswerServiceImpl(AnswerRepository answerRepository, QuestionRepository questionRepository) {
+    public AnswerServiceImpl(AnswerRepository answerRepository, QuestionRepository questionRepository, UserTakesQuizRepository userTakesQuizRepository) {
         this.answerRepository = answerRepository;
         this.questionRepository = questionRepository;
+        this.userTakesQuizRepository = userTakesQuizRepository;
     }
 
     @Override
@@ -38,7 +42,8 @@ public class AnswerServiceImpl implements AnswerService {
 
     @Override
     public Optional<Answer> createAnswer(AnswerDto answerDto) {
-        Answer newAnswer = new Answer(answerDto.getContent(), answerRepository.findById(answerDto.getQuestionId()).get().getQuestion(), answerDto.is_correct());
+        Answer newAnswer = new Answer(answerDto.getContent(), questionRepository.findById(answerDto.getQuestionId()).get(),
+                answerDto.is_correct());
         this.answerRepository.save(newAnswer);
         return Optional.of(newAnswer);
     }
@@ -52,23 +57,21 @@ public class AnswerServiceImpl implements AnswerService {
         return Optional.of(answer);
     }
 
-//    @Override
-//    public Optional<Question> addAnswerToQuestion(Long questionId, List<AddAnswerDto> answerIds) {
-//        List<Answer> answers = new ArrayList<>();
-//        Question question = this.questionRepository.findById(questionId).orElseThrow(()->new QuestionNotFoundException(questionId));
-//        List<Long> ids = new ArrayList<>();
-//        for(int i=0; i<answerIds.size(); i++){
-//            ids.add(answerIds.get(i).getId());
-//        }
-//        for(Answer answer : this.answerRepository.findAll()){
-//            for (Long answerId : ids){
-//                if(answer.getId().equals(answerId)){
-//                    answers.add(answer);
-//                }
-//            }
-//        }
-//        question.setAnswers(answers);
-//        this.questionRepository.save(question);
-//        return Optional.of(question);
-//    }
+    @Override
+    public Optional<UserTakesQuiz> getResult(Long quizId, Long userId, List<Long> answerIds) {
+        int result = 0;
+
+        for (Answer answer : this.answerRepository.findAllById(answerIds)) {
+            if (answer.is_correct())
+                result += 1;
+        }
+
+        UserTakesQuiz userTakesQuiz = this.userTakesQuizRepository.findByQuizIdAndUserId(quizId, userId);
+
+        userTakesQuiz.setResult(result);
+        this.userTakesQuizRepository.save(userTakesQuiz);
+
+        return Optional.of(userTakesQuiz);
+    }
+
 }

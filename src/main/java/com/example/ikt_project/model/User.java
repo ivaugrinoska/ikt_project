@@ -2,9 +2,7 @@ package com.example.ikt_project.model;
 
 import com.example.ikt_project.model.enumerations.Role;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -30,7 +28,7 @@ public class User implements UserDetails {
 
     private boolean isAccountNonExpired = true;
     private boolean isAccountNonLocked = true;
-    private boolean isCredentialsNonExpired =  true;
+    private boolean isCredentialsNonExpired = true;
     private boolean isEnabled = true;
 
     @Override

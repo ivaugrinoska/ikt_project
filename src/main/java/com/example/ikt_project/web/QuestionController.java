@@ -38,7 +38,7 @@ public class QuestionController {
 
     @PutMapping("/edit/{id}")
     public ResponseEntity<Question> save(@PathVariable Long id,
-                                     @RequestBody QuestionDto questionDto) {
+                                         @RequestBody QuestionDto questionDto) {
         return this.questionService.edit(id, questionDto)
                 .map(question -> ResponseEntity.ok().body(question))
                 .orElseGet(() -> ResponseEntity.badRequest().build());
@@ -47,7 +47,7 @@ public class QuestionController {
     @DeleteMapping("/delete/{id}")
     public ResponseEntity deleteById(@PathVariable Long id) {
         this.questionService.deleteById(id);
-        if(this.questionService.findById(id).isEmpty()) return ResponseEntity.ok().build();
+        if (this.questionService.findById(id).isEmpty()) return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
     }
 

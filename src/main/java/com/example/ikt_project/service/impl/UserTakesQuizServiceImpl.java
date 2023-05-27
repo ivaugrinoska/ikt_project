@@ -53,13 +53,4 @@ public class UserTakesQuizServiceImpl implements UserTakesQuizService {
         return Optional.of(this.userTakesQuizRepository.findById(id).orElseThrow(() -> new UserTakesQuizException(id)));
     }
 
-    @Override
-    public Optional<UserTakesQuiz> addResult(Long id, int result) {
-        UserTakesQuiz userTakesQuiz = this.userTakesQuizRepository.findById(id)
-                .orElseThrow(() -> new UserTakesQuizException(id));
-
-        userTakesQuiz.setResult(result);
-
-        return Optional.of(this.userTakesQuizRepository.save(userTakesQuiz));
-    }
 }

@@ -27,8 +27,7 @@ public class AuthController {
         try {
             authService.register(registerUserDto.getEmail(), registerUserDto.getUsername(), registerUserDto.getPassword(), registerUserDto.getRepeatPassword(), registerUserDto.getName(), registerUserDto.getSurname(), Role.ROLE_USER);
             return ResponseEntity.status(HttpStatus.CREATED).body("User has been created");
-        }
-        catch (InvalidArgumentsException | PasswordsDoNotMatchException exception){
+        } catch (InvalidArgumentsException | PasswordsDoNotMatchException exception) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }

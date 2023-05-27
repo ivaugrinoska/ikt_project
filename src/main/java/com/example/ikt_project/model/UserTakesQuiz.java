@@ -1,6 +1,5 @@
 package com.example.ikt_project.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,12 +14,13 @@ public class UserTakesQuiz {
     Long userId;
     int result;
 
-    public UserTakesQuiz() {}
+    public UserTakesQuiz() {
+    }
 
     public UserTakesQuiz(Long quizId, Long userId) {
         this.quizId = quizId;
         this.userId = userId;
-//        this.result = result;
+        this.result = 0;
     }
 
 }

@@ -1,6 +1,5 @@
 package com.example.ikt_project.model.dto;
 
-import com.example.ikt_project.model.Quiz;
 import lombok.Data;
 
 @Data
@@ -9,7 +8,8 @@ public class QuestionDto {
 
     Long quizId;
 
-    public QuestionDto() {}
+    public QuestionDto() {
+    }
 
     public QuestionDto(String content, Long quizId) {
         this.content = content;

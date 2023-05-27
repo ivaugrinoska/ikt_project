@@ -6,9 +6,9 @@ import lombok.Data;
 public class UserTakesQuizDto {
     Long quizId;
     Long userId;
-//    int result;
 
-    public UserTakesQuizDto() {}
+    public UserTakesQuizDto() {
+    }
 
     public UserTakesQuizDto(Long quizId, Long userId) {
         this.quizId = quizId;

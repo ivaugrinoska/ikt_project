@@ -1,6 +1,5 @@
 package com.example.ikt_project.model.dto;
 
-import com.example.ikt_project.model.Question;
 import lombok.Data;
 
 @Data

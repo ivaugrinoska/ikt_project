@@ -19,5 +19,4 @@ public interface UserTakesQuizService {
 
     Optional<UserTakesQuiz> findById(Long id);
 
-    Optional<UserTakesQuiz> addResult(Long id, int result);
 }

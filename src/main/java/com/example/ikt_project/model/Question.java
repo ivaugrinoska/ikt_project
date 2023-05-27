@@ -1,10 +1,7 @@
 package com.example.ikt_project.model;
 
-
 import jakarta.persistence.*;
 import lombok.Data;
-
-import java.util.List;
 
 @Data
 @Entity
@@ -18,10 +15,8 @@ public class Question {
     @ManyToOne
     Quiz quiz;
 
-//    @OneToMany
-//    List<Answer> answers;
-
-    public Question() {}
+    public Question() {
+    }
 
     public Question(String content, Quiz quiz) {
         this.content = content;

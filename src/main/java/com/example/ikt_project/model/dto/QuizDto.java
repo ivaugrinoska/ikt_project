@@ -8,9 +8,10 @@ public class QuizDto {
     String title;
     String description;
 
-    public QuizDto(){}
+    public QuizDto() {
+    }
 
-    public QuizDto(String title, String description){
+    public QuizDto(String title, String description) {
         this.title = title;
         this.description = description;
     }

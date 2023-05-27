@@ -17,9 +17,6 @@ public class Answer {
     @ManyToOne
     private Question question;
 
-//    @OneToOne
-//    private Question correctQuestion;
-
     public Answer() {
     }
 

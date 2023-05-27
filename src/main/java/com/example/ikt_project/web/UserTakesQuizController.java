@@ -19,12 +19,12 @@ public class UserTakesQuizController {
     }
 
     @GetMapping
-    public List<UserTakesQuiz> findAll(){
+    public List<UserTakesQuiz> findAll() {
         return this.userTakesQuizService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<UserTakesQuiz> findById(@PathVariable Long id){
+    public ResponseEntity<UserTakesQuiz> findById(@PathVariable Long id) {
         return this.userTakesQuizService.findById(id)
                 .map(object -> ResponseEntity.ok().body(object))
                 .orElseGet(() -> ResponseEntity.notFound().build());
@@ -37,25 +37,18 @@ public class UserTakesQuizController {
                 .orElseGet(() -> ResponseEntity.badRequest().build());
     }
 
-    @PostMapping("/{id}/addResult")
-    public ResponseEntity<UserTakesQuiz> addResult(@PathVariable Long id, @RequestBody int result) {
-        return this.userTakesQuizService.addResult(id, result)
-                .map(object -> ResponseEntity.ok().body(object))
-                .orElseGet(() -> ResponseEntity.badRequest().build());
-    }
-
     @GetMapping("/findAllByUser")
-    public List<UserTakesQuiz> findAllByUser(@RequestBody Long userId){
+    public List<UserTakesQuiz> findAllByUser(@RequestBody Long userId) {
         return this.userTakesQuizService.findAllByUser(userId);
     }
 
     @GetMapping("/findAllByQuiz")
-    public List<UserTakesQuiz> findAllByQuiz(@RequestBody Long quizId){
+    public List<UserTakesQuiz> findAllByQuiz(@RequestBody Long quizId) {
         return this.userTakesQuizService.findAllByQuiz(quizId);
     }
 
     @GetMapping("/findAllByResult")
-    public List<UserTakesQuiz> findAllByResult(@RequestBody int result){
+    public List<UserTakesQuiz> findAllByResult(@RequestBody int result) {
         return this.userTakesQuizService.findAllByResult(result);
     }
 
