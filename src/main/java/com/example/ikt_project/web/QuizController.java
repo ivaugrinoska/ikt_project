@@ -78,4 +78,9 @@ public class QuizController {
         return this.questionService.findAll();
     }
 
+    @GetMapping("/{quizId}/questions")
+    public List<Question> findAllQuestionsByQuiz(@PathVariable Long quizId){
+        return questionService.getAllByQuizId(quizId);
+    }
+
 }

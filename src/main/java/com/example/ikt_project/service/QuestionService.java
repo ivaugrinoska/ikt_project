@@ -16,4 +16,6 @@ public interface QuestionService {
     Optional<Question> edit(Long id, QuestionDto questionDto);
 
     void deleteById(Long id);
+
+    List<Question> getAllByQuizId(Long quizId);
 }
