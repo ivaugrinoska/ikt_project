@@ -12,9 +12,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/authentication")
-@CrossOrigin(origins = "http://localhost:3000")
 public class AuthController {
 
     private final AuthService authService;
@@ -41,7 +41,7 @@ public class AuthController {
         try {
             user = this.authService.login(username, password);
             request.getSession().setAttribute("user", user);
-            return ResponseEntity.ok("Successfully logged in!");
+            return ResponseEntity.ok(user.getName());
         } catch (InvalidUserCredentialsException exception) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
                     .body("Invalid username or password");
