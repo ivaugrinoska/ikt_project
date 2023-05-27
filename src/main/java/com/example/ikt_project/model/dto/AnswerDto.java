@@ -6,7 +6,6 @@ import lombok.Data;
 public class AnswerDto {
     private String content;
     private boolean is_correct;
-
     private Long questionId;
 
     public AnswerDto() {
