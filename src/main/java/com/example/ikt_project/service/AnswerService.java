@@ -19,4 +19,5 @@ public interface AnswerService {
     Optional<Answer> editAnswer(long id, AnswerDto answerDto);
 
     Optional<UserTakesQuiz> getResult(Long quizId, Long userId, List<Long> answerIds);
+    List<Answer> getAllAnswersByQuestionId(Long id);
 }

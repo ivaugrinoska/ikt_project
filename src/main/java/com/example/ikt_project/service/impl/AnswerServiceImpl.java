@@ -74,4 +74,9 @@ public class AnswerServiceImpl implements AnswerService {
         return Optional.of(userTakesQuiz);
     }
 
+    @Override
+    public List<Answer> getAllAnswersByQuestionId(Long id) {
+        return answerRepository.findAllByQuestionId(id);
+    }
+
 }

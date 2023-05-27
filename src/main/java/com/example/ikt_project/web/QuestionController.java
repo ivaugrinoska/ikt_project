@@ -1,7 +1,9 @@
 package com.example.ikt_project.web;
 
+import com.example.ikt_project.model.Answer;
 import com.example.ikt_project.model.Question;
 import com.example.ikt_project.model.dto.QuestionDto;
+import com.example.ikt_project.service.AnswerService;
 import com.example.ikt_project.service.QuestionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,9 +15,11 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 public class QuestionController {
     private final QuestionService questionService;
+    private final AnswerService answerService;
 
-    public QuestionController(QuestionService questionService) {
+    public QuestionController(QuestionService questionService, AnswerService answerService) {
         this.questionService = questionService;
+        this.answerService = answerService;
     }
 
     @GetMapping
@@ -50,6 +54,11 @@ public class QuestionController {
         this.questionService.deleteById(id);
         if (this.questionService.findById(id).isEmpty()) return ResponseEntity.ok().build();
         return ResponseEntity.badRequest().build();
+    }
+
+    @GetMapping("/{questionId}/answers")
+    public List<Answer> getAllAnswersByQuestionId(@PathVariable Long questionId){
+        return answerService.getAllAnswersByQuestionId(questionId);
     }
 
 }
